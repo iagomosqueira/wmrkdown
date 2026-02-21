@@ -1,6 +1,6 @@
 Package: wmrkdown
 Title: A set of templates to generate WUR and WMR documents using (R)markdown
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
   person("Iago", "Mosqueira", email = "iago.mosqueira@wur.nl",
     role = "cre", comment=c(c(ORCID = "0000-0002-3252-0591"))))
