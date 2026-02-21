@@ -1,0 +1,64 @@
+---
+title: A minimal example
+subtitle: Subtitle
+author: Iago Mosqueira
+date: April 2026
+institute: Wageningen Marine Research
+address: IJmuiden, NL
+email: iago.mosqueira@wur.nl
+goodbye: "Thank you for your attention"
+logo: "`r system.file('rmarkdown', 'templates', 'wur', 'resources', 'footer_wur.png', package='wmrkdown')`"
+front: "`r system.file('rmarkdown', 'templates', 'wur', 'resources', 'logo_wur.png', package='wmrkdown')`"
+titlegraphic: "`r system.file('rmarkdown', 'templates', 'wur', 'resources', 'northsea.png', package='wmrkdown')`"
+output: wmrkdown::wur
+fontsize: 12pt
+---
+
+```{r,setup, include=FALSE}
+knitr::opts_chunk$set(cache=FALSE)
+```
+
+# First Section
+
+## First Frame
+
+Hello, world!
+
+# Second Section
+
+## Second Frame
+
+### Bulleted Lists
+- Element A
+- Element B
+    - B.1
+    - B.2
+- Element C    
+
+## Frame with 2 columns
+
+:::: {.columns}
+
+::: {.column width="40%"}
+contents...
+:::
+
+::: {.column width="60%"}
+contents...
+:::
+
+::::
+
+## Frame with 2 columns
+
+:::: {.columns}
+
+::: {.column width="60%"}
+contents...
+:::
+
+::: {.column width="40%"}
+contents...
+:::
+
+::::
