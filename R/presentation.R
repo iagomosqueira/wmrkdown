@@ -1,12 +1,12 @@
-# wur.R - WUR-styled Beamer presentation
-# wmrkdown/R/wur.R
+# presentation.R - WUR-styled Beamer presentation
+# wmrkdown/R/presentation.R
 
 # Copyright (c) WMR, 2026.
 # Author: Iago MOSQUEIRA <iago.mosqueira@wur.nl>
 #
 # Distributed under the terms of the EUPL-1.2
 
-# wur {{{
+# presentation {{{
 
 #' WUR Beamer Presentation Format
 #'
@@ -59,12 +59,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' # In an R Markdown YAML header:
-#' # ---
-#' # title: "My WUR Presentation"
-#' # author: "Your Name"
-#' # output: wmrdown::wur()
-#' # ---
+#' # Draft a presentation Rmd
+#' draft("test.Rmd", template="wur", package="wmrkdown", edit=FALSE)
+#' # Convert to pdf
+#'  render("test/test.Rmd")
 #' }
 #'
 #' @seealso
@@ -74,16 +72,8 @@
 #' @author Iago Mosqueira (WMR)
 #'
 #' @keywords internal
-#'
-#' @examples
-#' \dontrun{
-#' library(rmarkdown)
-#' draft("myslides.Rmd", template="wur", package="wmrkdown", edit=FALSE)
-#' setwd("myslides")       ## template creates a new subdir
-#' render("myslides.Rmd")
-#' }
 
-wur <- function(toc = FALSE,
+presentation <- function(toc = FALSE,
   slide_level = 2,
   incremental = FALSE,
   fig_width = 10,
