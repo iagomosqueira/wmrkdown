@@ -92,7 +92,7 @@ presentation <- function(toc = FALSE,
   md_extensions = NULL,
   pandoc_args = NULL) {
 
-  template <- system.file("rmarkdown", "templates", "wur",
+  template <- system.file("rmarkdown", "templates", "presentation",
     "resources", "template.tex", package="wmrkdown")
 
     rmarkdown::beamer_presentation(template = template,
