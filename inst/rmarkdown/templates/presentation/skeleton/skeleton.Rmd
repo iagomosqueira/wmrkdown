@@ -14,8 +14,9 @@ output: wmrkdown::presentation
 fontsize: 12pt
 ---
 
-```{r,setup, include=FALSE}
-knitr::opts_chunk$set(cache=FALSE)
+```{r, knitr, include=FALSE}
+knitr::opts_chunk$set(cache=FALSE, out.width="65%", fig.align="center", fig.path="report",
+  echo=FALSE, warning=FALSE, message=FALSE)
 ```
 
 # First Section
@@ -24,11 +25,16 @@ knitr::opts_chunk$set(cache=FALSE)
 
 Hello, world!
 
+```{r}
+include_graphics("report/.png")
+```
+
 # Second Section
 
 ## Second Frame
 
 ### Bulleted Lists
+
 - Element A
 - Element B
     - B.1
