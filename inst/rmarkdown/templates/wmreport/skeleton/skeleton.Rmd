@@ -1,0 +1,70 @@
+---
+title: 
+subtitle: 
+author:
+  - Iago MOSQUEIRA <iago.mosqueira@wur.nl>
+  - Another Author
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  bookdown::word_document2:       # captions are not fields
+    number_sections: yes
+  officedown::rdocx_document:     # .unnumbered fails
+    reference_num:   true         # turn captions into Word fields
+    number_sections: true
+    base_format: "bookdown::word_document2"
+tags:
+references:
+- type: article-journal
+  id: Kell_2007
+  author:
+  - family: Kell
+  issued:
+    date-parts:
+    - - 2007
+  title: 'FLR: an open-source framework for the evaluation and development of management strategies'
+  container-title: 'ICES Journal of Marine Science'
+  volume: 64
+  issue: 4
+  page: 640-646
+  DOI: 10.1093/icesjms/fsm012
+license: Creative Commons Attribution-ShareAlike 4.0 International Public License
+---
+
+```{r options, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+library(flextable)
+```
+
+# Summary {.unnumbered}
+
+# Introduction
+
+As done by @Kell_2007
+
+# Assignment
+
+# Materials and Methods
+
+# Results
+
+```{r plot, fig.cap="A plot"}
+plot(9)
+```
+
+```{r table}
+as_flextable(data.frame(n=seq(10), data=rnorm(10)))
+```
+
+# Conclusions
+
+# Quality assurance
+
+# References {-}
+
+::: {#refs}
+:::
+
+# Justification
+
+# Annex 1 Title

@@ -1,0 +1,3 @@
+name: WMR report (docx)
+description: A markdfosn template to produce a docx file to place inside the WMR report template.
+create_dir: false

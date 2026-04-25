@@ -14,6 +14,7 @@ $if(fontfamily)$
 $else$
 \usepackage{lmodern}
 $endif$
+\usepackage{array}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -307,6 +308,15 @@ $if(titlegraphic)$
   \titlegraphic{\centering\hfill\includegraphics[height=5cm]{$titlegraphic$}}
 $endif$
 
+\newcommand{\insertfinalgraphic}{}
+\newcommand{\finalgraphic}[1]{\renewcommand{\insertfinalgraphic}{#1}}
+
+$if(finalgraphic)$
+  \finalgraphic{\centering\hfill\includegraphics[height=5cm]{$finalgraphic$}}
+$else$
+  \finalgraphic{\centering\hfill\includegraphics[height=5cm]{$titlegraphic$}}
+$endif$
+
 \providecommand{\pandocbounded}[1]{#1}
 
 % colors
@@ -340,6 +350,13 @@ $endif$
 }
 
 % frame title
+% TODO SET correctly space to text
+\setbeamertemplate{frametitle}{
+  \vspace{0.25cm}
+  \insertframetitle
+  \vspace{0.5cm}
+}
+
 \setbeamercolor{frametitle}{fg=darkgreen}
 
 % title page
@@ -400,7 +417,7 @@ $endif$
     \begin{column}{.4\textwidth}
       \vfill
       \mbox{
-        \centering\hfill\includegraphics[width=\textwidth]{$titlegraphic$}
+        \centering\hfill\includegraphics[width=\textwidth]{$finalgraphic$}
       }
     \end{column}%
   \end{columns}
