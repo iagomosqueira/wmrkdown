@@ -308,6 +308,7 @@ $if(titlegraphic)$
   \titlegraphic{\centering\hfill\includegraphics[height=5cm]{$titlegraphic$}}
 $endif$
 
+% finalgraphic
 \newcommand{\insertfinalgraphic}{}
 \newcommand{\finalgraphic}[1]{\renewcommand{\insertfinalgraphic}{#1}}
 
@@ -334,6 +335,9 @@ $endif$
 
 % footline with logo
 \makeatletter
+\newif\iflastframe
+\lastframefalse
+
 \setbeamertemplate{footline}{%
   \leavevmode%
   \hbox{%
@@ -343,17 +347,27 @@ $endif$
   \includegraphics[height=0.4cm]{$logo$}%
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.45\paperwidth,ht=2.5ex,dp=1.5ex,right,rounded=true]{section in head/foot}%
-  \insertframenumber{}\hspace*{2ex} 
+  \iflastframe
+  \else
+    \insertframenumber{}\hspace*{2ex}
+  \fi
   \end{beamercolorbox}%
   }%
   \vskip3pt%
 }
+\makeatother
 
 % frame title
-% TODO SET correctly space to text
+% TODO SET correct space to text
 \setbeamertemplate{frametitle}{
   \vspace{0.25cm}
   \insertframetitle
+  \vspace{0.5cm}
+}
+
+\setbeamertemplate{frametitle}{
+  \vspace{0.25cm}
+  {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}
   \vspace{0.5cm}
 }
 
@@ -396,9 +410,14 @@ $endif$
 
 % final page
 \setbeamertemplate{endpage}{%
-  \frametitle{$goodbye$}
-  \usebeamertemplate{frametitle}
-%  \setbeamertemplate{footline}{}
+  \lastframetrue
+  \leavevmode\vskip0.25cm
+  $if(goodbye)$
+    \def\insertframetitle{$goodbye$}
+  $else$
+    \def\insertframetitle{\phantom{X}}
+  $endif$
+  \usebeamertemplate{frametitle}%
 
   % start the columns environment    
   \begin{columns} 
