@@ -1,0 +1,47 @@
+---
+title: "Title"
+subtitle: "Meeting"
+author:
+  - Name Surname (WMR)^[Wageningen Marine Research, IJmuiden (NL), <name.surname@wur.nl>]
+institute:
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+version:
+status:
+output:
+  wmrkdown::working_document:
+    left_header: "Author - Short"
+    right_header: "Doc. reference"
+tags:
+abstract: |
+  Abstract
+bibliography:
+license: Creative Commons Attribution-ShareAlike 4.0 International Public License
+---
+
+```{r options, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+```
+
+# Introduction
+
+# Materials and Methods
+
+# Results
+
+```{r plot, fig.cap="A plot"}
+plot(9)
+```
+
+```{r table}
+as_flextable(data.frame(n=seq(10), data=rnorm(10)))
+```
+
+# Conclusions
+
+# References {-}
+
+::: {#refs}
+:::
+
+# Annex 1 Title

@@ -176,6 +176,7 @@ $if(graphics)$
   \makeatletter
   \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
   \def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+
   \makeatother
   % Scale images if necessary, so that they will not overflow the page
   % margins by default, and it is still possible to overwrite the defaults
@@ -313,9 +314,9 @@ $endif$
 \newcommand{\finalgraphic}[1]{\renewcommand{\insertfinalgraphic}{#1}}
 
 $if(finalgraphic)$
-  \finalgraphic{\centering\hfill\includegraphics[height=5cm]{$finalgraphic$}}
-$else$
-  \finalgraphic{\centering\hfill\includegraphics[height=5cm]{$titlegraphic$}}
+\finalgraphic{\centering\hfill\includegraphics[height=\textwidth]{$finalgraphic$}}
+$elseif(titlegraphic)$
+\finalgraphic{\centering\hfill\includegraphics[height=\textwidth]{$titlegraphic$}}
 $endif$
 
 \providecommand{\pandocbounded}[1]{#1}
@@ -361,14 +362,12 @@ $endif$
 % TODO SET correct space to text
 \setbeamertemplate{frametitle}{
   \vspace{0.25cm}
-  \insertframetitle
+  {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}
   \vspace{0.5cm}
 }
 
-\setbeamertemplate{frametitle}{
-  \vspace{0.25cm}
-  {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}
-  \vspace{0.5cm}
+\setbeamertemplate{frame end}{%
+  \vspace{1.5cm}%
 }
 
 \setbeamercolor{frametitle}{fg=darkgreen}
@@ -383,7 +382,7 @@ $endif$
 }
 
 \setbeamertemplate{author}{
-  \footnotesize \textcolor{darkgreen}{$date$} \textcolor{white}{|}  \textcolor{darkgreen}{\insertauthor \enspace ($institute$)}
+  \footnotesize \textcolor{darkgreen}{$date$} \textcolor{white}{|}  \textcolor{darkgreen}{\insertauthor \enspace $if(institute)$($institute$)$endif$}
 }
 
 \setbeamertemplate{title page}{
@@ -436,7 +435,7 @@ $endif$
     \begin{column}{.4\textwidth}
       \vfill
       \mbox{
-        \centering\hfill\includegraphics[width=\textwidth]{$finalgraphic$}
+        \insertfinalgraphic
       }
     \end{column}%
   \end{columns}

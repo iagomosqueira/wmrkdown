@@ -90,33 +90,48 @@ presentation <- function(toc = FALSE,
   citation_package = c("default", "natbib", "biblatex"),
   includes = NULL,
   md_extensions = NULL,
-  pandoc_args = NULL) {
+  pandoc_args = NULL,
+  logo = system.file("rmarkdown", "templates", "presentation", "resources",
+    "footer_wur.png", package = "wmrkdown"),
+  front = system.file("rmarkdown", "templates", "presentation", "resources",
+    "logo_wur.png", package = "wmrkdown"),
+  titlegraphic = system.file("rmarkdown", "templates", "presentation", "resources",
+    "northsea.png", package = "wmrkdown")) {
 
   template <- system.file("rmarkdown", "templates", "presentation",
-    "resources", "template.tex", package="wmrkdown")
+    "resources", "template.tex", package = "wmrkdown")
 
-    rmarkdown::beamer_presentation(template = template,
-      toc = toc,
-      slide_level = slide_level,
-      incremental = incremental,
-      fig_width = fig_width,
-      fig_height = fig_height,
-      fig_crop = fig_crop,
-      fig_caption = fig_caption,
-      dev = dev,
-      df_print = df_print,
-      theme = "default",
-      fonttheme = fonttheme,
-      colortheme = colortheme,
-      highlight = highlight,
-      keep_tex = keep_tex,
-      latex_engine = latex_engine,
-      citation_package = citation_package,
-      includes = includes,
-      md_extensions = md_extensions,
-      pandoc_args = pandoc_args)
+  # Build default pandoc variable args for image paths
+  default_args <- c(
+    rmarkdown::pandoc_variable_arg("logo", logo),
+    rmarkdown::pandoc_variable_arg("front", front),
+    rmarkdown::pandoc_variable_arg("titlegraphic", titlegraphic)
+  )
+
+  rmarkdown::beamer_presentation(template = template,
+    toc = toc,
+    slide_level = slide_level,
+    incremental = incremental,
+    fig_width = fig_width,
+    fig_height = fig_height,
+    fig_crop = fig_crop,
+    fig_caption = fig_caption,
+    dev = dev,
+    df_print = df_print,
+    theme = "default",
+    fonttheme = fonttheme,
+    colortheme = colortheme,
+    highlight = highlight,
+    keep_tex = keep_tex,
+    latex_engine = latex_engine,
+    citation_package = citation_package,
+    includes = includes,
+    md_extensions = md_extensions,
+    pandoc_args = c(default_args, pandoc_args))
 }
+
 # }}}
+
 
 knitr_fun <- function(name) utils::getFromNamespace(name, 'knitr')
 
