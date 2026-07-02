@@ -95,18 +95,33 @@ presentation <- function(toc = FALSE,
     "footer_wur.png", package = "wmrkdown"),
   front = system.file("rmarkdown", "templates", "presentation", "resources",
     "logo_wur.png", package = "wmrkdown"),
-  titlegraphic = system.file("rmarkdown", "templates", "presentation", "resources",
-    "northsea.png", package = "wmrkdown")) {
+  titlegraphic = NULL,
+  finalgraphic = NULL) {
 
   template <- system.file("rmarkdown", "templates", "presentation",
     "resources", "template.tex", package = "wmrkdown")
 
-  # Build default pandoc variable args for image paths
+  # Build default pandoc variable args for branding image paths.
+  # logo and front are WUR-specific and are always set via --variable.
   default_args <- c(
     rmarkdown::pandoc_variable_arg("logo", logo),
-    rmarkdown::pandoc_variable_arg("front", front),
-    rmarkdown::pandoc_variable_arg("titlegraphic", titlegraphic)
+    rmarkdown::pandoc_variable_arg("front", front)
   )
+
+  # titlegraphic is intentionally NOT added as a --variable by default.
+  # Pandoc --variable takes precedence over document metadata, so adding it
+  # unconditionally would silently override any titlegraphic set in the
+  # top-level YAML of the Rmd. Only forward it when the caller explicitly
+  # provides a value through the output options.
+  if (!is.null(titlegraphic)) {
+    default_args <- c(default_args,
+      rmarkdown::pandoc_variable_arg("titlegraphic", titlegraphic))
+  }
+
+  if (!is.null(finalgraphic)) {
+    default_args <- c(default_args,
+      rmarkdown::pandoc_variable_arg("finalgraphic", finalgraphic))
+  }
 
   rmarkdown::beamer_presentation(template = template,
     toc = toc,

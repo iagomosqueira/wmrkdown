@@ -7,8 +7,6 @@ institute: Wageningen Marine Research
 address: IJmuiden, NL
 email: name.surname@wur.nl
 goodbye: "Thank you for your attention"
-logo: "`r system.file('rmarkdown', 'templates', 'presentation', 'resources', 'footer_wur.png', package='wmrkdown')`"
-front: "`r system.file('rmarkdown', 'templates', 'presentation', 'resources', 'logo_wur.png', package='wmrkdown')`"
 titlegraphic: "`r system.file('rmarkdown', 'templates', 'presentation', 'resources', 'northsea.png', package='wmrkdown')`"
 output: wmrkdown::presentation
 fontsize: 12pt
