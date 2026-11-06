@@ -1,3 +1,5 @@
 export("presentation")
+export("wmreport")
 import("knitr")
 import("rmarkdown")
+import("xml2")

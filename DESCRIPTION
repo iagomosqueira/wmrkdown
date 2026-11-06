@@ -1,6 +1,6 @@
 Package: wmrkdown
 Title: A set of templates to generate WUR and WMR documents using (R)markdown
-Version: 0.2.4
+Version: 0.3.0
 Authors@R: c(
   person("Iago", "Mosqueira", email = "iago.mosqueira@wur.nl",
     role = "cre", comment=c(c(ORCID = "0000-0002-3252-0591"))))
@@ -8,6 +8,7 @@ Description: A series of templates are provided that allow using (R)markdown and
 URL: https://github.com/iagomosqueira/wmrkdown
 BugReports: https://github.com/iagomosqueira/wmrkdown/issues
 Depends: rmarkdown, knitr
+Imports: bookdown, xml2
 License: EUPL
 Encoding: UTF-8
 RoxygenNote: 7.3.3

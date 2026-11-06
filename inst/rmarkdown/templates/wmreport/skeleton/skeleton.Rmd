@@ -1,70 +1,62 @@
 ---
-title: 
-subtitle: 
-author:
-  - Iago MOSQUEIRA <iago.mosqueira@wur.nl>
-  - Another Author
+title: ""
+subtitle: ""
+author: 
+  - Name Surname (WMR)^[Wageningen Marine Research, IJmuiden (NL), <name.surname@wur.nl>]
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  bookdown::word_document2:       # captions are not fields
-    number_sections: yes
-  officedown::rdocx_document:     # .unnumbered fails
-    reference_num:   true         # turn captions into Word fields
-    number_sections: true
+  officedown::rdocx_document:
+    reference_num: true
+    number_sections: false
     base_format: "bookdown::word_document2"
+  bookdown::html_document2:
+    toc: true
+  bookdown::pdf_document2:
+    toc: true
+    number_sections: yes
+    fig_caption: yes
+    latex_engine: pdflatex
+    keep_tex: no
+documentclass: scrartcl
+fontsize: 12pt
+toc-depth: 1
+bibliography: boot/initial/references.bib
+csl: boot/initial/ices-journal-of-marine-science.csl
 tags:
-references:
-- type: article-journal
-  id: Kell_2007
-  author:
-  - family: Kell
-  issued:
-    date-parts:
-    - - 2007
-  title: 'FLR: an open-source framework for the evaluation and development of management strategies'
-  container-title: 'ICES Journal of Marine Science'
-  volume: 64
-  issue: 4
-  page: 640-646
-  DOI: 10.1093/icesjms/fsm012
+abstract: |
+  Abstract as one line
 license: Creative Commons Attribution-ShareAlike 4.0 International Public License
 ---
 
-```{r options, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, knitr, echo=FALSE, message=FALSE}
 library(knitr)
-opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
-library(flextable)
+opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,
+  out.width="65%", fig.pos="p")
+if (!isTRUE(pandoc_to() == "docx")) opts_chunk$set(fig.align="center")
+if (isTRUE(pandoc_to() == "docx")) opts_chunk$set(dpi=400)
 ```
 
-# Summary {.unnumbered}
+# Executive summary {-}
 
 # Introduction
 
-As done by @Kell_2007
+# Material and Methods
 
-# Assignment
+## Data
 
-# Materials and Methods
+## Model
 
 # Results
 
-```{r plot, fig.cap="A plot"}
-plot(9)
-```
+# Discussion
 
-```{r table}
-as_flextable(data.frame(n=seq(10), data=rnorm(10)))
-```
+## Limitations
 
-# Conclusions
-
-# Quality assurance
+## Conclusions
 
 # References {-}
 
 ::: {#refs}
 :::
-
-# Justification
 
 # Annex 1 Title

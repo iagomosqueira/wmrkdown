@@ -13,8 +13,10 @@ fontsize: 12pt
 ---
 
 ```{r, knitr, include=FALSE}
-knitr::opts_chunk$set(cache=FALSE, out.width="65%", fig.align="center", fig.path="report",
-  echo=FALSE, warning=FALSE, message=FALSE)
+knitr::opts_chunk$set(cache=FALSE, out.width="60%", fig.align="center",
+  fig.path="report", echo=FALSE, warning=FALSE, message=FALSE)
+# IGNORE captions if set
+knitr::opts_hooks$set(fig.cap = function(options) { options$fig.cap <- ""; options})
 ```
 
 # First Section

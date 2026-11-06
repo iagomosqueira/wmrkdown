@@ -147,7 +147,6 @@ presentation <- function(toc = FALSE,
 
 # }}}
 
-
 knitr_fun <- function(name) utils::getFromNamespace(name, 'knitr')
 
 output_asis <- knitr_fun('output_asis')

@@ -1,5 +1,5 @@
 # working_document.R - DESC
-# /home/mosqu003/Projects/WMR/wmrkdown/wmrkdown/R/working_document.R
+# wmrkdown/R/working_document.R
 
 # Copyright (c) WMR, 2026.
 # Author: Iago MOSQUEIRA <iago.mosqueira@wur.nl>
